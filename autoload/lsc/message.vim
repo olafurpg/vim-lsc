@@ -2,6 +2,22 @@ function! lsc#message#show(message, ...) abort
   call s:Echo('echo', a:message, get(a:, 1, 'Log'))
 endfunction
 
+function! lsc#message#showRequest(message, ...) abort
+  let actions = get(a:, 2, [])
+  let options = [a:message]
+  let index = 0
+  while index < len(actions)
+    call add(options, (index + 1) . '. ' . get(actions, index)['title'])
+    let index += 1
+  endwhile
+  let result = str2nr(inputlist(options))
+  if result <= 0 || result - 1 > len(actions)
+    return v:null
+  else
+    return get(actions, result - 1)
+  endif
+endfunction
+
 function! lsc#message#log(message, ...) abort
   call s:Echo('echom', a:message, get(a:, 1, 'Log'))
 endfunction

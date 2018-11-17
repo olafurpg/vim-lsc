@@ -12,6 +12,7 @@
 - Notifications with a method starting with `$/` will be silently dropped
   instead of showing a message.
 - Fix a bug where `au_group_id` was not initialized correctly.
+- Add support for `window/showMessageRequest`.
 
 # 0.3.1
 
