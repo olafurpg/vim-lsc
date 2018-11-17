@@ -126,6 +126,7 @@ function! s:Start(server) abort
       \}
   call lsc#server#call(&filetype, 'initialize',
       \ params, function('OnInitialize'), v:true)
+  call lsc#server#call(&filetype, 'initialized', v:null)
 endfunction
 
 function! s:CheckCapabilities(init_results, server) abort
